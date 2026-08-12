@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oopbuy Spreadsheet Category Label Auditor</title>
+  <meta name="description" content="Audit category labels in spreadsheet CSV notes, normalize common shoes, bags, apparel and accessories aliases, and export a review queue.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://buykit-resource-hub-2026.github.io/oopbuy-spreadsheet-category-label-auditor/">
+  <meta property="og:title" content="Oopbuy Spreadsheet Category Label Auditor">
+  <meta property="og:description" content="A local browser and CLI tool for normalizing category labels and flagging unresolved rows in spreadsheet CSV notes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://buykit-resource-hub-2026.github.io/oopbuy-spreadsheet-category-label-auditor/">
+  <link rel="stylesheet" href="web/styles.css">
+  <script type="module" src="web/app.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="site-nav" aria-label="Primary">
+      <strong>Category Label Auditor</strong>
+      <div><a href="#tool">Audit tool</a><a href="#method">Method</a><a href="#limits">Limits</a></div>
+    </nav>
+    <div class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Local CSV utility</p>
+        <h1>Oopbuy Spreadsheet Category Label Auditor</h1>
+        <p class="lead">Turn inconsistent shoes, bags, apparel and accessories labels into a reviewable category column. The tool runs in your browser, sends no file anywhere, and marks uncertainty instead of guessing.</p>
+      </div>
+    </div>
+  </header>
+  <main class="layout">
+    <article>
+      <section class="panel" id="tool" aria-labelledby="tool-heading">
+        <h2 id="tool-heading">Audit a CSV export</h2>
+        <p>Paste a CSV containing a <code>category</code> column. Recognized aliases receive a normalized label; blank, unknown and conflicting values enter the review queue.</p>
+        <form id="audit-form">
+          <label for="csv-input"><strong>CSV data</strong></label>
+          <textarea id="csv-input" spellcheck="false" aria-describedby="csv-help"></textarea>
+          <p id="csv-help">Quoted fields and commas inside titles are supported. Data stays in this tab.</p>
+          <div class="actions">
+            <button type="submit">Run category audit</button>
+            <button type="button" class="secondary" id="load-sample">Load sample</button>
+            <a class="button secondary" id="download" href="#" download="category-audit.csv" hidden>Download audit CSV</a>
+          </div>
+          <p class="error" id="error" role="alert"></p>
+        </form>
+        <div class="summary" id="summary" aria-live="polite"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Row</th><th>Input</th><th>Normalized</th><th>Status</th><th>Reason</th></tr></thead>
+            <tbody id="results"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="method" aria-labelledby="method-heading">
+        <h2 id="method-heading">A category audit that leaves a trail</h2>
+        <ol class="step-list">
+          <li><strong>Normalize known aliases.</strong> For example, <em>sneakers</em> becomes <code>shoes</code> and <em>handbags</em> becomes <code>bags</code>.</li>
+          <li><strong>Keep ambiguity visible.</strong> A value such as <code>shoes / bags</code> is not silently reduced to one category.</li>
+          <li><strong>Export reason codes.</strong> The output adds normalized category, status and reason columns for later review.</li>
+        </ol>
+      </section>
+
+      <section class="panel" aria-labelledby="category-heading">
+        <h2 id="category-heading">Adjust aliases for your own notes</h2>
+        <p>The defaults cover broad spreadsheet groupings rather than a product catalog. Edit the map before auditing if your notes use different terms.</p>
+        <label for="alias-input"><strong>One category per line: category: alias, alias</strong></label>
+        <textarea id="alias-input" spellcheck="false"></textarea>
+      </section>
+
+      <section class="panel" id="limits" aria-labelledby="limits-heading">
+        <h2 id="limits-heading">What the result does not prove</h2>
+        <div class="boundary">
+          <p>A normalized label does not verify a product, source URL, price, stock level, option, image or QC result. It only makes the category field easier to review. Re-open current source pages before using time-sensitive information.</p>
+        </div>
+        <p>The sample uses invented placeholder records and <code>example.com</code> URLs. This project does not ship a product directory or claim category counts.</p>
+      </section>
+
+      <aside class="next-step" aria-labelledby="next-heading">
+        <h2 id="next-heading">Review the current row context</h2>
+        <p>After resolving category-label warnings in the exported notes, review the live Oopbuy Spreadsheet to confirm the current row and category context before relying on the cleaned file.</p>
+        <a class="button" href="https://oopbuyspsheet.com/" rel="noopener noreferrer">Review the live Oopbuy Spreadsheet</a>
+      </aside>
+    </article>
+
+    <aside class="sidebar" aria-label="Project notes">
+      <div class="note"><h2>Input</h2><p>A UTF-8 CSV with a <code>category</code> header. Other columns are preserved.</p></div>
+      <div class="note"><h2>Output</h2><p>A downloadable CSV with normalized category, audit status and reason code.</p></div>
+      <div class="note"><h2>CLI</h2><p><code>npm run audit -- input.csv output.csv</code></p></div>
+      <div class="note"><h2>Privacy</h2><p>Browser processing is local. The project has no analytics, upload endpoint or external script dependency.</p></div>
+    </aside>
+  </main>
+  <footer>Open-source review utility. Not an official Oopbuy service and not a product, price, stock or QC database.</footer>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Oopbuy Spreadsheet Category Label Auditor",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any modern browser or Node.js",
+    "url": "https://buykit-resource-hub-2026.github.io/oopbuy-spreadsheet-category-label-auditor/",
+    "description": "A local browser and CLI utility for normalizing category labels and exporting a review queue from spreadsheet CSV notes."
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "oopbuy-spreadsheet-category-label-auditor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-free CSV category label auditor for spreadsheet review notes.",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "audit": "node bin/audit-categories.mjs"
+  },
+  "license": "MIT"
+}

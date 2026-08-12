@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://buykit-resource-hub-2026.github.io/oopbuy-spreadsheet-category-label-auditor/sitemap.xml
