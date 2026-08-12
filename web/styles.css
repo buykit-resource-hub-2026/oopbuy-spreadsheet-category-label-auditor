@@ -49,6 +49,9 @@ th, td { padding: 10px 9px; border-bottom: 1px solid var(--line); text-align: le
 .step-list { display: grid; gap: 14px; padding: 0; list-style: none; counter-reset: step; }
 .step-list li { position: relative; padding-left: 42px; }
 .step-list li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 28px; height: 28px; color: white; background: var(--accent); border-radius: 50%; font-weight: 800; }
+.result-figure { margin: 24px 0 0; }
+.result-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.result-figure figcaption { margin-top: 8px; color: var(--muted); font-size: .86rem; }
 .boundary { border-left: 4px solid var(--review); padding-left: 14px; }
 .next-step { margin-top: 24px; padding: 24px; color: white; background: #28251b; border-radius: 6px; }
 .next-step a { color: white; }
